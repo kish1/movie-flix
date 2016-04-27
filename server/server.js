@@ -5,8 +5,7 @@ var express = require("express");
 
 var app = express();
 
-console.log(__dirname + "/../client");
-app.use(express.static(__dirname + "/../client"));
+app.use(express.static(__dirname + "/.."));
 
 var ipaddress = "127.0.0.1";
 var port = 4000;

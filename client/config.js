@@ -12,16 +12,6 @@
                 controller: "HomeController",
                 controllerAs: "model"
             })
-            .when("/admin-home", {
-                templateUrl: "views/admin/admin-home.view.html",
-                controller: "AdminHomeController",
-                controllerAs: "model"
-            })
-            .when("/admin-edit", {
-                templateUrl: "views/admin/admin-edit.view.html",
-                controller: "AdminEditController",
-                controllerAs: "model"
-            })
             .otherwise({
                 redirectTo: "/home"
             });

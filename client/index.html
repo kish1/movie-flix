@@ -5,19 +5,22 @@
     <title>Movie-Flix</title>
 
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="client/css/style.css">
+    <link href="css/style.css">
 
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/angular-route/angular-route.min.js"></script>
 
     <script src="app.module.js"></script>
+
+    <script src="views/home/home.controller.js"></script>
+    <script src="views/main/main.controller.js"></script>
+
     <script src="config.js"></script>
 
 </head>
 <body ng-controller="MainController">
     <div class="kish-container" ng-view></div>
-
-
 </body>
 </html>
