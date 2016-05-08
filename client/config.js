@@ -12,6 +12,11 @@
                 controller: "HomeController",
                 controllerAs: "model"
             })
+            .when("/browse", {
+                templateUrl: "views/title/browse.view.html",
+                controller: "BrowseController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/home"
             });
