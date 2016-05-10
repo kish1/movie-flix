@@ -1,22 +1,26 @@
 <div class="container">
-    <br><br><br>
     <div class="row">
+        <a role="button" class="btn btn-primary pull-left" href="#/toprated">Top-Rated</a>
         <div class="col-md-2"></div>
         <div class="col-md-4 form-group">
-            <div class="kish-container">
+            <div class="kish-full-height">
                 <h3 class="text-center">Filters</h3>
-
-                <label>
-                    <input type="checkbox" ng-model="model.filters.movie"> Movie
+                <label class="radio-inline">
+                    <label class="radio-inline">
+                        <input type="radio" name="type" ng-model="model.filters.type" value="movie">Movie
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" ng-model="model.filters.type" value="series">Series
+                    </label>
                 </label>
-                &nbsp;
-                <label>
-                    <input type="checkbox" ng-model="model.filters.series"> Series
-                </label><br>
+                <a role="button" class="btn btn-default btn-sm" ng-click="model.filters.type=undefined">Clear</a>
+                <br>
                 <label> Year</label>
                 <input type="text" class="form-control" ng-model="model.filters.year">
                 <label> Genre</label>
-                <input type="text" class="form-control" ng-model="model.filters.genre" placeholder="seperate entries by a space">
+                <input type="text" class="form-control" ng-model="model.filters.genre">
+                <label> Title</label>
+                <input type="text" class="form-control" ng-model="model.filters.title">
 
             </div>
         </div>
@@ -24,34 +28,40 @@
         <div class="col-md-4">
             <div>
                 <h3 class="text-center">Sort</h3>
-                <div class="btn-group" data-toggle="buttons">
+                <div class="btn-group">
                     <label class="btn btn-default">
-                        <input type="radio" ng-model="model.sort" value="year"> Year
+                        <input type="radio" ng-model="model.sortBy" value="year"> Year
                     </label>
                     <label class="btn btn-default">
-                        <input type="radio" ng-model="model.sort" value="imdbRatings"> IMDB Ratings
+                        <input type="radio" ng-model="model.sortBy" value="imdbRatings"> IMDB Ratings
                     </label>
                     <label class="btn btn-default">
-                        <input type="radio" ng-model="model.sort" value="imdbVotes"> IMDB Votes
+                        <input type="radio" ng-model="model.sortBy" value="imdbVotes"> IMDB Votes
                     </label>
                 </div>
+                &nbsp;
+                <label>
+                    <input type="checkbox" ng-model="model.sortDesc"> Desc
+                </label>
+                <a role="button" class="btn btn-default btn-sm" ng-click="model.sortBy=undefined">Clear</a>
             </div>
+            <br>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <a role="button" class="btn btn-block btn-success" ng-click="model.browse()">Browse</a>
+            <a role="button" class="btn btn-block btn-success" ng-click="model.browse(0)">Browse</a>
         </div>
         <div class="col-md-3"></div>
     </div>
     <br>
     <div class="row">
         <table class="table table-striped">
-            <thead class="thead-inverse">
+            <thead>
             <tr>
-                <th>#</th>
                 <th>Thumbnail</th>
+                <th>#</th>
                 <th>Title</th>
                 <th>Year</th>
                 <th>IMDB Ratings</th>
@@ -60,17 +70,22 @@
             </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="result in model.results">
-                    <td>{{++(model.start)}}</td>
-                    <td><img ng-src="{{model.Poster}}"></td>
-                    <td>{{model.Title}}</td>
-                    <td>{{model.Year}}</td>
-                    <td>{{model.IMDBRatings}}</td>
-                    <td>{{model.IMDBVotes}}</td>
-                    <td>{{model.Genre}}</td>
+                <tr ng-repeat="result in model.results" ng-click="model.details(result.imdbID)" role="button">
+                    <td><img class="kish-thumbnail" ng-src="{{result.Poster}}"></td>
+                    <td>{{model.skip + 1 + $index}}</td>
+                    <td>{{result.Title}}</td>
+                    <td>{{result.Year}}</td>
+                    <td class="text-center">{{result.imdbRating}}</td>
+                    <td>{{result.imdbVotes}}</td>
+                    <td>{{result.Genre}}</td>
                 </tr>
             </tbody>
         </table>
-
+    </div>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <ul class="pagination" ng-repeat="pageNum in model.pageList">
+            <li ng-class="{active: model.isActivePage($index)}"><a role="button" ng-click="model.browse($index*model.offset)">{{pageNum}}</a></li>
+        </ul>
     </div>
 </div>
