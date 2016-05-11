@@ -1,4 +1,12 @@
-.kish-container {
+html, body {
+    height: 100%;
+}
+
+body {
+    padding-top: 65px;
+}
+
+.kish-full-height {
     height: 100%;
 }
 
@@ -8,4 +16,17 @@
 .navbar-nav {
     display:inline-block;
     float:none;
+}
+
+.kish-thumbnail {
+    height: 100px;
+    width: 75px;
+}
+
+.no-wrapping {
+    white-space: nowrap;
+}
+
+.box {
+    border: 1px red dotted;
 }
