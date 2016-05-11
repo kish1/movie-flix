@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MovieFlixApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie-Flix</title>
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+
+    <script src="app.module.js"></script>
+
+    <script src="services/title.service.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/rating.service.client.js"></script>
+    <script src="services/comment.service.client.js"></script>
+    <script src="services/admin.service.client.js"></script>
+
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/home/home.controller.js"></script>
+    <script src="views/main/main.controller.js"></script>
+    <script src="views/title/browse.controller.js"></script>
+    <script src="views/title/toprated.controller.js"></script>
+    <script src="views/title/details.controller.js"></script>
+    <script src="views/admin/admin.controller.js"></script>
+    <script src="views/admin/admin-edit.controller.js"></script>
+
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+
+    <script src="config.js"></script>
+
+</head>
+<body ng-controller="MainController">
+    <ng-include src="'views/header/header.view.html'"></ng-include>
+    <div class="kish-full-height" ng-view></div>
+</body>
+</html>

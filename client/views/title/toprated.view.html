@@ -1,0 +1,38 @@
+<div class="container kish-full-height">
+    <br><br>
+    <h2 class="text-center">Top-Rated</h2>
+    <div class="btn-group">
+        <label class="btn btn-default">
+            <input type="radio" ng-model="model.type" value="movie"> Movie
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" ng-model="model.type" value="series"> Series
+        </label>
+    </div>
+    <a role="button" class="btn btn-success" ng-click="model.topRated(model.type)">Search Top-Rated</a>
+    <a role="button" class="btn btn-primary pull-right" href="#/browse">Browse Catalog</a>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Thumbnail</th>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>IMDB Rating</th>
+                    <th>IMDB Votes</th>
+                    <th>Genre</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="result in model.results" ng-click="model.details(result.imdbID)" role="button">
+                <td><img class="kish-thumbnail" ng-src="{{result.Poster}}"></td>
+                <td>{{$index + 1}}</td>
+                <td>{{result.Title}}</td>
+                <td class="text-center">{{result.imdbRating}}</td>
+                <td>{{result.imdbVotes}}</td>
+                <td>{{result.Genre}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
