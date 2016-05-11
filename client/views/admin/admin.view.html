@@ -1,0 +1,26 @@
+<div class="container kish-full-height">
+    <h1 class="page-header">Admin</h1>
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" class="form-control" ng-model="model.title.title"></td>
+                <td class="no-wrapping">
+                    <button ng-click="model.addTitle(model.title)" class="btn btn-success">Add</button>
+                </td>
+            </tr>
+            <tr ng-repeat="title in model.titles">
+                <td><a ng-click="model.editTitle($index)">{{title.Title}}</a></td>
+                <td class="no-wrapping">
+                    <button ng-click="model.deleteTitle($index)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
