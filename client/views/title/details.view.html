@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="container kish-full-height">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <br>
+            <img height="250" width="190" ng-src="{{model.title.Poster}}">
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+            <h1>{{model.title.Title}}
+                <div class="btn-group pull-right" ng-hide="model.hasRated">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{model.rateMessage}} <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <li><a class="dropdown-item" ng-click="model.rate(1)">1</a></li>
+                        <li><a class="dropdown-item" ng-click="model.rate(2)">2</a></li>
+                        <li><a class="dropdown-item" ng-click="model.rate(3)">3</a></li>
+                        <li><a class="dropdown-item" ng-click="model.rate(4)">4</a></li>
+                        <li><a class="dropdown-item" ng-click="model.rate(5)">5</a></li>
+                    </div>
+                </div>
+                <a role="button" ng-show="model.hasRated">{{model.rateMessage}}</a>
+            </h1>
+            <h4>{{model.title.Rated}} | {{model.title.Runtime}} | {{model.title.Type}}({{model.title.Year}}) | <a target="_blank" ng-href="http://www.imdb.com/title/{{model.title.imdbID}}">IMDB Page</a></h4>
+            <h5>IMDB Rating: {{model.title.imdbRating}}/10 ({{model.title.imdbVotes}})</h5>
+            <h5>Movie-Flix Rating: {{model.title.movieFlixRating}}/5 ({{model.title.movieFlixVotes}})</h5>
+            <h3>Director: {{model.title.Director}}</h3>
+            <h3>Genre: {{model.title.Genre}}</h3>
+            <h3>Actors: {{model.title.Actors}}</h3>
+            <h3>Plot: {{model.title.Plot}}</h3>
+        </div>
+    </div>
+    <br>
+    <h2 class="page-header">Comments</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <label>Your comment</label>
+            <textarea class="form-control" ng-model="model.comment.content"></textarea>
+            <a role="button" class="btn btn-primary" ng-click="model.addComment(model.comment)">Comment</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" ng-repeat="comment in model.comments">
+            <label>{{comment.name}}</label> <p>: {{comment.content}}</p>
+        </div>
+    </div>
+</div>
