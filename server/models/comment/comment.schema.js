@@ -4,9 +4,9 @@
 "use strict";
 module.exports = function (mongoose) {
     var commentSchema = mongoose.Schema({
-    userId: mongoose.Schema.ObjectId,
+    userId: {type: mongoose.Schema.ObjectId, required: true},
     name: String,
-    titleId: mongoose.Schema.ObjectId,
+    titleId: {type: mongoose.Schema.ObjectId, required: true},
     timestamp: Date,
     content: String
     }, {collection: "comment"});
