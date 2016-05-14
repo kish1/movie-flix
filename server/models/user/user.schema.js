@@ -3,15 +3,16 @@
  */
 "use strict";
 module.exports = function (mongoose) {
-    var ratingSchema = mongoose({
-        titleId: mongoose.Schema.ObjectId
+    var ratingSchema = mongoose.Schema({
+        titleId: mongoose.Schema.ObjectId,
+        rating: Number
     });
 
     var userSchema = mongoose.Schema({
         name: String,
-        email: String,
+        email: {type: String, required: true, index: {unique: true}},
         dob: Date,
-        password: String,
+        password: {type: String, required: true},
         ratings: [ratingSchema]
     }, {collection: "user"});
 
