@@ -4,12 +4,12 @@
 "use strict";
 module.exports = function (mongoose) {
     var titleSchema = mongoose.Schema({
-      Title: String,
-      Year: String,
+      Title: {type: String, index: true},
+      Year: {type: String, index: true},
       Rated: String,
       Released: String,
       Runtime: String,
-      Genre: String,
+      Genre: {type: String, index: true},
       Director: String,
       Writer: String,
       Actors: String,
@@ -19,13 +19,13 @@ module.exports = function (mongoose) {
       Awards: String,
       Poster: String,
       Metascore: String,
-      imdbRating: String,
-      imdbVotes: String,
-      imdbID: String,
-      Type: {type: String, enum: ["movie", "series"]},
+      imdbRating: {type: String, index: true},
+      imdbVotes: {type: String, index: true},
+      imdbID: {type: String, index: true},
+      Type: {type: String, index: true, enum: ["movie", "series"]},
       movieFlixRating: Number,
       movieFlixVotes: Number
-    }, {collection: "title"});
+    }, {collection: "title", autoIndex: false});
 
     return titleSchema;
 };
