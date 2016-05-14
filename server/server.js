@@ -4,10 +4,10 @@
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-var multer = require('multer');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
+var passport = require('passport');
 
 var connectionString = 'mongodb://127.0.0.1:27017/movieflix';
 var db = mongoose.connect(connectionString);
@@ -19,13 +19,14 @@ var port = 4000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(multer());
 app.use(cookieParser());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 require("./app.js")(app, mongoose);
 
