@@ -20,6 +20,12 @@
   },
   "homepage": "https://github.com/kish1/movie-flix#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.4.16",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   }
 }
