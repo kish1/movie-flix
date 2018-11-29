@@ -1,2 +1,2 @@
 # movie-flix
-Another Netflix.
+A web-application to browse movies.
